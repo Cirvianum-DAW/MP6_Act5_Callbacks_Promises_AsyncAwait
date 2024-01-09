@@ -17,7 +17,42 @@ A JS existeixen diverses maneres de gestionar la asincronia. Principalment:
 
 ### A. Utilitzant Callbacks
 
-El codi que se't presenta a **ex.js** fa servir **callbacks** per dur a terme una tasca després de cercar un element en un array amb la funció `find`. Crea un arxiu **ex_a.js** i AFEGEIX ELS COMENTARIS QUE EXPLIQUEN I T'AJUDEN A ENTENDRE cada línia de codi i destaca l'ús del callback i el valor mostrat per pantalla.
+En aquest exercici, treballareu amb una funció anomenada `findOne` que busca un element en una llista d'usuaris. Aquesta funció fa servir callbacks per gestionar els resultats de la cerca.
+
+La funció `findOne` rep tres arguments:
+
+- `list`: una llista d'usuaris. Cada usuari és un objecte amb propietats `name` i `rol`.
+- `query`: un objecte amb dues propietats, `key` i `value`. La funció buscarà un usuari que tingui un valor `value` per a la propietat `key`.
+- `callbacks`: un objecte amb dues funcions, `onSuccess` i `onError`. Si es troba un usuari que compleixi la consulta, es cridarà `onSuccess` amb aquest usuari. Si no es troba cap usuari, es cridarà `onError` amb un missatge d'error.
+
+La funció `findOne` fa servir `setTimeout` per simular una operació asincrònica que triga 2 segons a completar-se.
+
+El vostre objectiu és implementar aquesta funció i les funcions de callback `onSuccess` i `onError`.
+
+Aquí teniu un exemple de com es crida a la funció `findOne`:
+
+```javascript
+...
+
+const users = [
+    {
+        name: 'Carlos',
+        rol: 'Teacher',
+    },
+    {
+        name: 'Ana',
+        rol: 'Boss',
+    },
+];
+
+console.log('findOne success');
+findOne(users, { key: 'name', value: 'Carlos' }, { onSuccess, onError });
+
+console.log('findOne error');
+findOne(users, { key: 'name', value: 'Fermin' }, { onSuccess, onError });
+```
+
+El codi que ha de fer servir callbacks per dur a terme una tasca després de cercar un element en un array amb la funció find. Modifica **ex_a.js** i AFEGEIX ELS COMENTARIS QUE EXPLIQUEN I T'AJUDEN A ENTENDRE cada línia de codi i destaca l'ús del callback i el valor mostrat per pantalla.
 
 ### B. Utilitzant Promeses
 
@@ -29,4 +64,4 @@ Crea un arxiu **ex_c.js**. Modifica el codi anterior per fer servir **async/awai
 
 ### d. Versió Paral·lela amb Promeses i Async/Await
 
-Crea un arxiu **ex_d.js**. El codi obtingut un cop fem ús de **async/await** es torna seqüencial. A continuació, escriu i documenta al mateix codi com seria la versió paral·lela utilitzant promeses i async/await, de manera que totes les crides a la funció `findOne` s'executin simultàniament, sense haver d'esperar que finalitzi la primera per executar la segona.
+Crea un arxiu **ex_d.js**. El codi obtingut un cop fem ús de **async/await** es torna seqüencial. No t'has preguntat si existeix alguna manera de fer peticions de manera simultània sense haver d'esperara que acabi una per començar un altra però que globalment requerim que totes elles acabin resolent-se per retornar la promesa? Tracta de trobar de quina manera es gestiona això i intenta, amb el mateix codi, de trobar com seria la versió paral·lela utilitzant promeses i async/await, de manera que TOTES LES CRIDES A LA FUNCIÓ `findOne` S'EXECUTIN SIMULTÀNIAMENT, sense haver d'esperar que finalitzi la primera per executar la segona.

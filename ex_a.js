@@ -1,12 +1,5 @@
-const findOne = (list, { key, value }, { onSuccess, onError }) => {
-  setTimeout(() => {
-    const element = list.find((element) => element[key] === value);
-    element ? onSuccess(element) : onError({ msg: 'ERROR: Element Not Found' });
-  }, 2000);
+const findOne = (list, {}, {}) => {
 };
-
-const onSuccess = ({ name }) => console.log(`user: ${name}`);
-const onError = ({ msg }) => console.log(msg);
 
 const users = [
   {
